@@ -5,11 +5,11 @@ import { cn } from "@/src/lib/utils";
 
 interface StepperProps {
   steps: string[];
-  currentStep: number;
+  current: number;
   className?: string;
 }
 
-export function Stepper({ steps, currentStep, className }: StepperProps) {
+export function Stepper({ steps, current, className }: StepperProps) {
   return (
     <div className={cn("flex items-center justify-between", className)}>
       {steps.map((step, index) => (
@@ -18,14 +18,14 @@ export function Stepper({ steps, currentStep, className }: StepperProps) {
             <div
               className={cn(
                 "w-10 h-10 rounded-full flex items-center justify-center text-sm font-medium transition-all duration-300",
-                index < currentStep
+                index < current
                   ? "bg-[#FFC700] text-black"
-                  : index === currentStep
+                  : index === current
                   ? "bg-[#FFC700]/20 text-[#FFC700] border-2 border-[#FFC700]"
                   : "bg-white/10 text-white/50"
               )}
             >
-              {index < currentStep ? (
+              {index < current ? (
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
@@ -36,7 +36,7 @@ export function Stepper({ steps, currentStep, className }: StepperProps) {
             <span
               className={cn(
                 "mt-2 text-xs hidden sm:block transition-colors",
-                index <= currentStep ? "text-white" : "text-white/50"
+                index <= current ? "text-white" : "text-white/50"
               )}
             >
               {step}
@@ -46,7 +46,7 @@ export function Stepper({ steps, currentStep, className }: StepperProps) {
             <div
               className={cn(
                 "flex-1 h-0.5 mx-2 transition-colors",
-                index < currentStep ? "bg-[#FFC700]" : "bg-white/20"
+                index < current ? "bg-[#FFC700]" : "bg-white/20"
               )}
             />
           )}

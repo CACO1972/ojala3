@@ -1,0 +1,339 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================
+   FUENTES - SENTIENT (Premium)
+   ============================================ */
+@font-face {
+  font-family: 'Sentient';
+  src: url('/fonts/Sentient-ExtraLight.woff2') format('woff2');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Sentient';
+  src: url('/fonts/Sentient-LightItalic.woff2') format('woff2');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* ============================================
+   VARIABLES CSS - PALETA CLÍNICA MIRÓ
+   ============================================ */
+:root {
+  /* Fuentes */
+  --font-sans: 'Sentient', 'Inter', system-ui, sans-serif;
+  --font-mono: 'Geist Mono', 'SF Mono', monospace;
+
+  /* Paleta de colores - Negro y Dorado Premium */
+  --color-background: #000000;
+  --color-foreground: #ffffff;
+  --color-primary: #FFC700;
+  --color-primary-foreground: #000000;
+  --color-muted: rgba(255, 255, 255, 0.1);
+  --color-muted-foreground: rgba(255, 255, 255, 0.85);
+  --color-border: #424242;
+  --color-input: #424242;
+  --color-ring: #FFC700;
+  --color-accent: #FFC700;
+  --color-accent-foreground: #000000;
+  --color-card: rgba(255, 255, 255, 0.03);
+  --color-card-foreground: #ffffff;
+  --color-destructive: #ef4444;
+  --color-destructive-foreground: #ffffff;
+
+  /* Radios */
+  --radius: 0.5rem;
+  --radius-sm: 0.25rem;
+  --radius-lg: 1rem;
+}
+
+/* ============================================
+   ESTILOS BASE
+   ============================================ */
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-weight: 200;
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: rgba(255, 199, 0, 0.3);
+  color: white;
+}
+
+/* ============================================
+   SCROLLBAR PERSONALIZADO
+   ============================================ */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #424242;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #FFC700;
+}
+
+/* ============================================
+   BOTONES
+   ============================================ */
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-8 py-4 
+           bg-gold text-black font-medium tracking-wide
+           transition-all duration-300 ease-out
+           hover:bg-gold-light hover:scale-105 hover:shadow-lg hover:shadow-gold/20
+           focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2 focus:ring-offset-black
+           disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center px-8 py-4 
+           bg-transparent text-white border border-white/30
+           font-light tracking-wide
+           transition-all duration-300 ease-out
+           hover:bg-white/10 hover:border-white/50
+           focus:outline-none focus:ring-2 focus:ring-white/50
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  /* ============================================
+     CARDS
+     ============================================ */
+  .card {
+    @apply bg-white/[0.03] border border-white/10 p-6 md:p-8
+           backdrop-blur-sm transition-all duration-300
+           hover:bg-white/[0.05] hover:border-gold/30;
+  }
+
+  .card-selection {
+    @apply bg-white/[0.02] border border-white/10 p-4 cursor-pointer
+           transition-all duration-300
+           hover:bg-white/[0.05] hover:border-gold/30 hover:scale-[1.02]
+           focus:outline-none focus:ring-2 focus:ring-gold/50;
+  }
+
+  .card-selection.selected {
+    @apply bg-gold/10 border-gold;
+  }
+
+  /* ============================================
+     INPUTS
+     ============================================ */
+  .input {
+    @apply w-full px-4 py-3 bg-white/5 border border-white/20
+           text-white placeholder-white/40
+           transition-all duration-200
+           focus:outline-none focus:border-gold focus:bg-white/10
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .checkbox {
+    @apply w-5 h-5 border-2 border-white/30 bg-transparent
+           checked:bg-gold checked:border-gold
+           focus:ring-2 focus:ring-gold focus:ring-offset-2 focus:ring-offset-black
+           transition-colors duration-200 cursor-pointer;
+  }
+
+  /* ============================================
+     NAVEGACIÓN
+     ============================================ */
+  .nav-link {
+    @apply text-sm tracking-wider text-white/80 
+           transition-colors duration-200
+           hover:text-white;
+  }
+
+  .nav-link-gold {
+    @apply text-sm tracking-wider text-gold
+           transition-colors duration-200
+           hover:text-gold-light;
+  }
+
+  /* ============================================
+     TEXTO CON HIGHLIGHT DORADO
+     ============================================ */
+  .text-gradient-gold {
+    @apply bg-gradient-to-r from-gold via-gold-light to-gold 
+           bg-clip-text text-transparent;
+  }
+
+  .text-glow-gold {
+    text-shadow: 0 0 20px rgba(255, 199, 0, 0.3),
+                 0 0 40px rgba(255, 199, 0, 0.2);
+  }
+
+  /* ============================================
+     DIAGNÓSTICO AI - PROSA
+     ============================================ */
+  .prose-diagnosis {
+    @apply text-white/90 leading-relaxed;
+  }
+
+  .prose-diagnosis h3 {
+    @apply text-xl font-light text-gold mt-6 mb-3 tracking-wide;
+  }
+
+  .prose-diagnosis h4 {
+    @apply text-lg font-light text-white mt-4 mb-2;
+  }
+
+  .prose-diagnosis p {
+    @apply mb-4 text-white/85;
+  }
+
+  .prose-diagnosis ul {
+    @apply list-disc list-inside mb-4 space-y-2 text-white/80;
+  }
+
+  .prose-diagnosis li {
+    @apply ml-4;
+  }
+
+  .prose-diagnosis strong {
+    @apply text-gold font-normal;
+  }
+
+  .prose-diagnosis em {
+    @apply text-white/70 not-italic;
+  }
+
+  /* ============================================
+     SECCIONES
+     ============================================ */
+  .section-padding {
+    @apply py-16 md:py-24 lg:py-32;
+  }
+
+  .container-narrow {
+    @apply max-w-3xl mx-auto px-4;
+  }
+}
+
+/* ============================================
+   ANIMACIONES
+   ============================================ */
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+
+  .animate-fade-in-up {
+    animation: fadeInUp 0.6s ease-out forwards;
+  }
+
+  .animate-pulse-gold {
+    animation: pulseGold 2s ease-in-out infinite;
+  }
+
+  .animate-shimmer {
+    animation: shimmer 2s linear infinite;
+    background: linear-gradient(90deg, transparent, rgba(255, 199, 0, 0.1), transparent);
+    background-size: 200% 100%;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulseGold {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(255, 199, 0, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 15px rgba(255, 199, 0, 0);
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* ============================================
+   GRAIN OVERLAY (opcional)
+   ============================================ */
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.03;
+  z-index: 1000;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* ============================================
+   RESPONSIVO Y ACCESIBILIDAD
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Focus visible para accesibilidad */
+:focus-visible {
+  outline: 2px solid #FFC700;
+  outline-offset: 2px;
+}
+
+/* ============================================
+   STICKY CTA MOBILE
+   ============================================ */
+.sticky-cta {
+  @apply fixed bottom-0 left-0 right-0 z-50
+         bg-black/95 backdrop-blur-sm border-t border-white/10
+         p-4 transform transition-transform duration-300;
+}
+
+.sticky-cta.hidden {
+  @apply translate-y-full;
+}
+
+/* ============================================
+   LOADING STATES
+   ============================================ */
+.skeleton {
+  @apply bg-white/10 animate-pulse rounded;
+}
+
+.spinner {
+  @apply w-6 h-6 border-2 border-white/20 border-t-gold rounded-full animate-spin;
+}
